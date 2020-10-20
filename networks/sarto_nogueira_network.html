@@ -1,0 +1,105 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1250;
+            height: 800px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "plano", "label": "plano", "shape": "dot", "value": 18}, {"id": "governo", "label": "governo", "shape": "dot", "value": 18}, {"id": "pol\u00edticas", "label": "pol\u00edticas", "shape": "dot", "value": 11}, {"id": "p\u00fablicas", "label": "p\u00fablicas", "shape": "dot", "value": 11}, {"id": "eixos", "label": "eixos", "shape": "dot", "value": 9}, {"id": "estrat\u00e9gicos", "label": "estrat\u00e9gicos", "shape": "dot", "value": 9}, {"id": "desenvolvimento", "label": "desenvolvimento", "shape": "dot", "value": 8}, {"id": "cada", "label": "cada", "shape": "dot", "value": 8}, {"id": "vez", "label": "vez", "shape": "dot", "value": 8}, {"id": "coliga\u00e7\u00e3o", "label": "coliga\u00e7\u00e3o", "shape": "dot", "value": 6}, {"id": "fortaleza", "label": "fortaleza", "shape": "dot", "value": 6}, {"id": "melhor", "label": "melhor", "shape": "dot", "value": 6}, {"id": "propostas", "label": "propostas", "shape": "dot", "value": 6}, {"id": "emprego", "label": "emprego", "shape": "dot", "value": 6}, {"id": "renda", "label": "renda", "shape": "dot", "value": 6}, {"id": "valores", "label": "valores", "shape": "dot", "value": 6}, {"id": "centrais", "label": "centrais", "shape": "dot", "value": 6}, {"id": "projetos", "label": "projetos", "shape": "dot", "value": 5}, {"id": "a\u00e7\u00f5es", "label": "a\u00e7\u00f5es", "shape": "dot", "value": 5}, {"id": "gera\u00e7\u00e3o", "label": "gera\u00e7\u00e3o", "shape": "dot", "value": 5}, {"id": "educa\u00e7\u00e3o", "label": "educa\u00e7\u00e3o", "shape": "dot", "value": 5}, {"id": "sa\u00fade", "label": "sa\u00fade", "shape": "dot", "value": 5}, {"id": "poder", "label": "poder", "shape": "dot", "value": 4}, {"id": "p\u00fablico", "label": "p\u00fablico", "shape": "dot", "value": 4}, {"id": "tantas", "label": "tantas", "shape": "dot", "value": 4}, {"id": "outras", "label": "outras", "shape": "dot", "value": 4}, {"id": "a\u00e7\u00e3o", "label": "a\u00e7\u00e3o", "shape": "dot", "value": 3}, {"id": "social", "label": "social", "shape": "dot", "value": 3}, {"id": "nesse", "label": "nesse", "shape": "dot", "value": 3}, {"id": "sentido", "label": "sentido", "shape": "dot", "value": 3}, {"id": "desigualdade", "label": "desigualdade", "shape": "dot", "value": 3}, {"id": "finan\u00e7as", "label": "finan\u00e7as", "shape": "dot", "value": 3}, {"id": "mobilidade", "label": "mobilidade", "shape": "dot", "value": 3}, {"id": "deve", "label": "deve", "shape": "dot", "value": 3}, {"id": "ser", "label": "ser", "shape": "dot", "value": 3}, {"id": "meio", "label": "meio", "shape": "dot", "value": 3}, {"id": "ambiente", "label": "ambiente", "shape": "dot", "value": 3}, {"id": "urbana", "label": "urbana", "shape": "dot", "value": 3}, {"id": "todos", "label": "todos", "shape": "dot", "value": 2}, {"id": "n\u00edveis", "label": "n\u00edveis", "shape": "dot", "value": 2}, {"id": "metas", "label": "metas", "shape": "dot", "value": 2}, {"id": "espec\u00edficas", "label": "espec\u00edficas", "shape": "dot", "value": 2}, {"id": "rede", "label": "rede", "shape": "dot", "value": 2}, {"id": "espa\u00e7os", "label": "espa\u00e7os", "shape": "dot", "value": 2}, {"id": "cultura", "label": "cultura", "shape": "dot", "value": 2}, {"id": "todas", "label": "todas", "shape": "dot", "value": 2}, {"id": "dimens\u00f5es", "label": "dimens\u00f5es", "shape": "dot", "value": 2}, {"id": "curto", "label": "curto", "shape": "dot", "value": 2}, {"id": "prazo", "label": "prazo", "shape": "dot", "value": 2}, {"id": "\u00faltimos", "label": "\u00faltimos", "shape": "dot", "value": 2}, {"id": "oito", "label": "oito", "shape": "dot", "value": 2}, {"id": "elabora\u00e7\u00e3o", "label": "elabora\u00e7\u00e3o", "shape": "dot", "value": 2}, {"id": "detalhamento", "label": "detalhamento", "shape": "dot", "value": 2}, {"id": "tantos", "label": "tantos", "shape": "dot", "value": 2}, {"id": "outros", "label": "outros", "shape": "dot", "value": 2}, {"id": "nichos", "label": "nichos", "shape": "dot", "value": 2}, {"id": "espec\u00edficos", "label": "espec\u00edficos", "shape": "dot", "value": 2}, {"id": "anos", "label": "anos", "shape": "dot", "value": 2}, {"id": "comercializa\u00e7\u00e3o", "label": "comercializa\u00e7\u00e3o", "shape": "dot", "value": 2}, {"id": "bens", "label": "bens", "shape": "dot", "value": 2}, {"id": "serem", "label": "serem", "shape": "dot", "value": 2}, {"id": "formuladas", "label": "formuladas", "shape": "dot", "value": 2}, {"id": "cidade", "label": "cidade", "shape": "dot", "value": 2}, {"id": "pessoas", "label": "pessoas", "shape": "dot", "value": 2}, {"id": "constru\u00eddo", "label": "constru\u00eddo", "shape": "dot", "value": 2}, {"id": "t\u00eam", "label": "t\u00eam", "shape": "dot", "value": 2}, {"id": "citar", "label": "citar", "shape": "dot", "value": 2}, {"id": "alguns", "label": "alguns", "shape": "dot", "value": 2}, {"id": "processo", "label": "processo", "shape": "dot", "value": 2}, {"id": "participativo", "label": "participativo", "shape": "dot", "value": 2}, {"id": "lazer", "label": "lazer", "shape": "dot", "value": 2}, {"id": "vale", "label": "vale", "shape": "dot", "value": 2}, {"id": "ressaltar", "label": "ressaltar", "shape": "dot", "value": 2}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "plano", "to": "governo"}, {"arrows": "to", "from": "pol\u00edticas", "to": "p\u00fablicas"}, {"arrows": "to", "from": "eixos", "to": "estrat\u00e9gicos"}, {"arrows": "to", "from": "estrat\u00e9gicos", "to": "desenvolvimento"}, {"arrows": "to", "from": "cada", "to": "vez"}, {"arrows": "to", "from": "coliga\u00e7\u00e3o", "to": "fortaleza"}, {"arrows": "to", "from": "vez", "to": "melhor"}, {"arrows": "to", "from": "propostas", "to": "plano"}, {"arrows": "to", "from": "fortaleza", "to": "cada"}, {"arrows": "to", "from": "emprego", "to": "renda"}, {"arrows": "to", "from": "valores", "to": "centrais"}, {"arrows": "to", "from": "projetos", "to": "a\u00e7\u00f5es"}, {"arrows": "to", "from": "gera\u00e7\u00e3o", "to": "emprego"}, {"arrows": "to", "from": "educa\u00e7\u00e3o", "to": "sa\u00fade"}, {"arrows": "to", "from": "poder", "to": "p\u00fablico"}, {"arrows": "to", "from": "tantas", "to": "outras"}, {"arrows": "to", "from": "plano", "to": "fortaleza"}, {"arrows": "to", "from": "a\u00e7\u00e3o", "to": "social"}, {"arrows": "to", "from": "nesse", "to": "sentido"}, {"arrows": "to", "from": "desigualdade", "to": "social"}, {"arrows": "to", "from": "finan\u00e7as", "to": "p\u00fablicas"}, {"arrows": "to", "from": "sa\u00fade", "to": "mobilidade"}, {"arrows": "to", "from": "deve", "to": "ser"}, {"arrows": "to", "from": "governo", "to": "coliga\u00e7\u00e3o"}, {"arrows": "to", "from": "meio", "to": "ambiente"}, {"arrows": "to", "from": "mobilidade", "to": "urbana"}, {"arrows": "to", "from": "todos", "to": "n\u00edveis"}, {"arrows": "to", "from": "metas", "to": "espec\u00edficas"}, {"arrows": "to", "from": "rede", "to": "espa\u00e7os"}, {"arrows": "to", "from": "cultura", "to": "tantas"}, {"arrows": "to", "from": "todas", "to": "dimens\u00f5es"}, {"arrows": "to", "from": "curto", "to": "prazo"}, {"arrows": "to", "from": "\u00faltimos", "to": "oito"}, {"arrows": "to", "from": "elabora\u00e7\u00e3o", "to": "detalhamento"}, {"arrows": "to", "from": "elabora\u00e7\u00e3o", "to": "plano"}, {"arrows": "to", "from": "governo", "to": "ser"}, {"arrows": "to", "from": "tantos", "to": "outros"}, {"arrows": "to", "from": "nichos", "to": "espec\u00edficos"}, {"arrows": "to", "from": "centrais", "to": "eixos"}, {"arrows": "to", "from": "oito", "to": "anos"}, {"arrows": "to", "from": "comercializa\u00e7\u00e3o", "to": "bens"}, {"arrows": "to", "from": "serem", "to": "formuladas"}, {"arrows": "to", "from": "cidade", "to": "pessoas"}, {"arrows": "to", "from": "ser", "to": "constru\u00eddo"}, {"arrows": "to", "from": "t\u00eam", "to": "ser"}, {"arrows": "to", "from": "citar", "to": "alguns"}, {"arrows": "to", "from": "detalhamento", "to": "plano"}, {"arrows": "to", "from": "processo", "to": "participativo"}, {"arrows": "to", "from": "lazer", "to": "educa\u00e7\u00e3o"}, {"arrows": "to", "from": "vale", "to": "ressaltar"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

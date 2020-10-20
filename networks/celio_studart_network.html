@@ -1,0 +1,105 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1250;
+            height: 800px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "partido", "label": "partido", "shape": "dot", "value": 10}, {"id": "verde", "label": "verde", "shape": "dot", "value": 10}, {"id": "meio", "label": "meio", "shape": "dot", "value": 10}, {"id": "ambiente", "label": "ambiente", "shape": "dot", "value": 10}, {"id": "pol\u00edticas", "label": "pol\u00edticas", "shape": "dot", "value": 9}, {"id": "p\u00fablicas", "label": "p\u00fablicas", "shape": "dot", "value": 9}, {"id": "economia", "label": "economia", "shape": "dot", "value": 7}, {"id": "solid\u00e1ria", "label": "solid\u00e1ria", "shape": "dot", "value": 7}, {"id": "deve", "label": "deve", "shape": "dot", "value": 6}, {"id": "ser", "label": "ser", "shape": "dot", "value": 6}, {"id": "qualidade", "label": "qualidade", "shape": "dot", "value": 6}, {"id": "vida", "label": "vida", "shape": "dot", "value": 6}, {"id": "educa\u00e7\u00e3o", "label": "educa\u00e7\u00e3o", "shape": "dot", "value": 6}, {"id": "ambiental", "label": "ambiental", "shape": "dot", "value": 6}, {"id": "justi\u00e7a", "label": "justi\u00e7a", "shape": "dot", "value": 5}, {"id": "social", "label": "social", "shape": "dot", "value": 5}, {"id": "munic\u00edpio", "label": "munic\u00edpio", "shape": "dot", "value": 5}, {"id": "fortaleza", "label": "fortaleza", "shape": "dot", "value": 5}, {"id": "valoriza\u00e7\u00e3o", "label": "valoriza\u00e7\u00e3o", "shape": "dot", "value": 4}, {"id": "profissionais", "label": "profissionais", "shape": "dot", "value": 4}, {"id": "ter", "label": "ter", "shape": "dot", "value": 4}, {"id": "guarda", "label": "guarda", "shape": "dot", "value": 4}, {"id": "municipal", "label": "municipal", "shape": "dot", "value": 4}, {"id": "devem", "label": "devem", "shape": "dot", "value": 4}, {"id": "econ\u00f4mica", "label": "econ\u00f4mica", "shape": "dot", "value": 4}, {"id": "cidade", "label": "cidade", "shape": "dot", "value": 4}, {"id": "criativa", "label": "criativa", "shape": "dot", "value": 4}, {"id": "merenda", "label": "merenda", "shape": "dot", "value": 4}, {"id": "escolar", "label": "escolar", "shape": "dot", "value": 4}, {"id": "seguran\u00e7a", "label": "seguran\u00e7a", "shape": "dot", "value": 4}, {"id": "p\u00fablica", "label": "p\u00fablica", "shape": "dot", "value": 4}, {"id": "poder", "label": "poder", "shape": "dot", "value": 4}, {"id": "p\u00fablico", "label": "p\u00fablico", "shape": "dot", "value": 4}, {"id": "mercado", "label": "mercado", "shape": "dot", "value": 4}, {"id": "trabalho", "label": "trabalho", "shape": "dot", "value": 4}, {"id": "ecologia", "label": "ecologia", "shape": "dot", "value": 4}, {"id": "urbana", "label": "urbana", "shape": "dot", "value": 4}, {"id": "toda", "label": "toda", "shape": "dot", "value": 4}, {"id": "popula\u00e7\u00e3o", "label": "popula\u00e7\u00e3o", "shape": "dot", "value": 4}, {"id": "rede", "label": "rede", "shape": "dot", "value": 4}, {"id": "diretriz", "label": "diretriz", "shape": "dot", "value": 4}, {"id": "program\u00e1tica", "label": "program\u00e1tica", "shape": "dot", "value": 4}, {"id": "recursos", "label": "recursos", "shape": "dot", "value": 4}, {"id": "naturais", "label": "naturais", "shape": "dot", "value": 4}, {"id": "gest\u00e3o", "label": "gest\u00e3o", "shape": "dot", "value": 4}, {"id": "empregos", "label": "empregos", "shape": "dot", "value": 4}, {"id": "verdes", "label": "verdes", "shape": "dot", "value": 4}, {"id": "levando", "label": "levando", "shape": "dot", "value": 4}, {"id": "considera\u00e7\u00e3o", "label": "considera\u00e7\u00e3o", "shape": "dot", "value": 4}, {"id": "cidad\u00e3o", "label": "cidad\u00e3o", "shape": "dot", "value": 3}, {"id": "fortalezense", "label": "fortalezense", "shape": "dot", "value": 3}, {"id": "programas", "label": "programas", "shape": "dot", "value": 3}, {"id": "sa\u00fade", "label": "sa\u00fade", "shape": "dot", "value": 3}, {"id": "arboriza\u00e7\u00e3o", "label": "arboriza\u00e7\u00e3o", "shape": "dot", "value": 3}, {"id": "rua", "label": "rua", "shape": "dot", "value": 3}, {"id": "sustentabilidade", "label": "sustentabilidade", "shape": "dot", "value": 3}, {"id": "pandemia", "label": "pandemia", "shape": "dot", "value": 3}, {"id": "novo", "label": "novo", "shape": "dot", "value": 3}, {"id": "parcerias", "label": "parcerias", "shape": "dot", "value": 3}, {"id": "m\u00e3o", "label": "m\u00e3o", "shape": "dot", "value": 3}, {"id": "obra", "label": "obra", "shape": "dot", "value": 3}, {"id": "inst\u00e2ncias", "label": "inst\u00e2ncias", "shape": "dot", "value": 3}, {"id": "sociais", "label": "sociais", "shape": "dot", "value": 3}, {"id": "parques", "label": "parques", "shape": "dot", "value": 3}, {"id": "infantis", "label": "infantis", "shape": "dot", "value": 3}, {"id": "racial", "label": "racial", "shape": "dot", "value": 3}, {"id": "g\u00eanero", "label": "g\u00eanero", "shape": "dot", "value": 3}, {"id": "desenvolvimento", "label": "desenvolvimento", "shape": "dot", "value": 3}, {"id": "sustent\u00e1vel", "label": "sustent\u00e1vel", "shape": "dot", "value": 3}, {"id": "coleta", "label": "coleta", "shape": "dot", "value": 3}, {"id": "seletiva", "label": "seletiva", "shape": "dot", "value": 3}, {"id": "local", "label": "local", "shape": "dot", "value": 3}, {"id": "escola", "label": "escola", "shape": "dot", "value": 3}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "partido", "to": "verde"}, {"arrows": "to", "from": "meio", "to": "ambiente"}, {"arrows": "to", "from": "pol\u00edticas", "to": "p\u00fablicas"}, {"arrows": "to", "from": "economia", "to": "solid\u00e1ria"}, {"arrows": "to", "from": "deve", "to": "ser"}, {"arrows": "to", "from": "qualidade", "to": "vida"}, {"arrows": "to", "from": "educa\u00e7\u00e3o", "to": "ambiental"}, {"arrows": "to", "from": "justi\u00e7a", "to": "social"}, {"arrows": "to", "from": "munic\u00edpio", "to": "fortaleza"}, {"arrows": "to", "from": "valoriza\u00e7\u00e3o", "to": "profissionais"}, {"arrows": "to", "from": "profissionais", "to": "educa\u00e7\u00e3o"}, {"arrows": "to", "from": "deve", "to": "ter"}, {"arrows": "to", "from": "guarda", "to": "municipal"}, {"arrows": "to", "from": "devem", "to": "ser"}, {"arrows": "to", "from": "econ\u00f4mica", "to": "social"}, {"arrows": "to", "from": "cidade", "to": "criativa"}, {"arrows": "to", "from": "merenda", "to": "escolar"}, {"arrows": "to", "from": "seguran\u00e7a", "to": "p\u00fablica"}, {"arrows": "to", "from": "poder", "to": "p\u00fablico"}, {"arrows": "to", "from": "economia", "to": "verde"}, {"arrows": "to", "from": "mercado", "to": "trabalho"}, {"arrows": "to", "from": "ecologia", "to": "urbana"}, {"arrows": "to", "from": "toda", "to": "popula\u00e7\u00e3o"}, {"arrows": "to", "from": "rede", "to": "municipal"}, {"arrows": "to", "from": "diretriz", "to": "program\u00e1tica"}, {"arrows": "to", "from": "recursos", "to": "naturais"}, {"arrows": "to", "from": "gest\u00e3o", "to": "p\u00fablica"}, {"arrows": "to", "from": "empregos", "to": "verdes"}, {"arrows": "to", "from": "levando", "to": "considera\u00e7\u00e3o"}, {"arrows": "to", "from": "cidad\u00e3o", "to": "fortalezense"}, {"arrows": "to", "from": "programas", "to": "sa\u00fade"}, {"arrows": "to", "from": "arboriza\u00e7\u00e3o", "to": "rua"}, {"arrows": "to", "from": "social", "to": "ambiental"}, {"arrows": "to", "from": "sustentabilidade", "to": "econ\u00f4mica"}, {"arrows": "to", "from": "pandemia", "to": "novo"}, {"arrows": "to", "from": "parcerias", "to": "p\u00fablico"}, {"arrows": "to", "from": "fortaleza", "to": "verde"}, {"arrows": "to", "from": "m\u00e3o", "to": "obra"}, {"arrows": "to", "from": "inst\u00e2ncias", "to": "sociais"}, {"arrows": "to", "from": "verde", "to": "fortaleza"}, {"arrows": "to", "from": "parques", "to": "infantis"}, {"arrows": "to", "from": "sa\u00fade", "to": "ambiental"}, {"arrows": "to", "from": "racial", "to": "g\u00eanero"}, {"arrows": "to", "from": "economia", "to": "criativa"}, {"arrows": "to", "from": "desenvolvimento", "to": "sustent\u00e1vel"}, {"arrows": "to", "from": "coleta", "to": "seletiva"}, {"arrows": "to", "from": "cidade", "to": "verde"}, {"arrows": "to", "from": "desenvolvimento", "to": "local"}, {"arrows": "to", "from": "escola", "to": "sustent\u00e1vel"}, {"arrows": "to", "from": "meio", "to": "recursos"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
