@@ -18,6 +18,75 @@
         }
 
         
+        #loadingBar {
+            position:absolute;
+            top:0px;
+            left:0px;
+            width: 1250;
+            height: 800px;
+            background-color:rgba(200,200,200,0.8);
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            opacity:1;
+        }
+
+        #bar {
+            position:absolute;
+            top:0px;
+            left:0px;
+            width:20px;
+            height:20px;
+            margin:auto auto auto auto;
+            border-radius:11px;
+            border:2px solid rgba(30,30,30,0.05);
+            background: rgb(0, 173, 246); /* Old browsers */
+            box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+        }
+
+        #border {
+            position:absolute;
+            top:10px;
+            left:10px;
+            width:500px;
+            height:23px;
+            margin:auto auto auto auto;
+            box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+            border-radius:10px;
+        }
+
+        #text {
+            position:absolute;
+            top:8px;
+            left:530px;
+            width:30px;
+            height:50px;
+            margin:auto auto auto auto;
+            font-size:22px;
+            color: #000000;
+        }
+
+        div.outerBorder {
+            position:relative;
+            top:400px;
+            width:600px;
+            height:44px;
+            margin:auto auto auto auto;
+            border:8px solid rgba(0,0,0,0.1);
+            background: rgb(252,252,252); /* Old browsers */
+            background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+            border-radius:72px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+        
 
         
 
@@ -28,6 +97,15 @@
 
 <body>
 <div id = "mynetwork"></div>
+
+<div id="loadingBar">
+    <div class="outerBorder">
+        <div id="text">0%</div>
+        <div id="border">
+            <div id="bar"></div>
+        </div>
+    </div>
+</div>
 
 
 <script type="text/javascript">
@@ -47,8 +125,8 @@
         
 
         // parsing and collecting nodes and edges from the python
-        nodes = new vis.DataSet([{"id": "partido", "label": "partido", "shape": "dot", "value": 10}, {"id": "verde", "label": "verde", "shape": "dot", "value": 10}, {"id": "meio", "label": "meio", "shape": "dot", "value": 10}, {"id": "ambiente", "label": "ambiente", "shape": "dot", "value": 10}, {"id": "pol\u00edticas", "label": "pol\u00edticas", "shape": "dot", "value": 9}, {"id": "p\u00fablicas", "label": "p\u00fablicas", "shape": "dot", "value": 9}, {"id": "economia", "label": "economia", "shape": "dot", "value": 7}, {"id": "solid\u00e1ria", "label": "solid\u00e1ria", "shape": "dot", "value": 7}, {"id": "qualidade", "label": "qualidade", "shape": "dot", "value": 6}, {"id": "vida", "label": "vida", "shape": "dot", "value": 6}, {"id": "educa\u00e7\u00e3o", "label": "educa\u00e7\u00e3o", "shape": "dot", "value": 6}, {"id": "ambiental", "label": "ambiental", "shape": "dot", "value": 6}, {"id": "deve", "label": "deve", "shape": "dot", "value": 6}, {"id": "ser", "label": "ser", "shape": "dot", "value": 6}, {"id": "munic\u00edpio", "label": "munic\u00edpio", "shape": "dot", "value": 5}, {"id": "fortaleza", "label": "fortaleza", "shape": "dot", "value": 5}, {"id": "justi\u00e7a", "label": "justi\u00e7a", "shape": "dot", "value": 5}, {"id": "social", "label": "social", "shape": "dot", "value": 5}, {"id": "ecologia", "label": "ecologia", "shape": "dot", "value": 4}, {"id": "urbana", "label": "urbana", "shape": "dot", "value": 4}]);
-        edges = new vis.DataSet([{"arrows": "to", "from": "partido", "to": "verde"}, {"arrows": "to", "from": "meio", "to": "ambiente"}, {"arrows": "to", "from": "pol\u00edticas", "to": "p\u00fablicas"}, {"arrows": "to", "from": "economia", "to": "solid\u00e1ria"}, {"arrows": "to", "from": "qualidade", "to": "vida"}, {"arrows": "to", "from": "educa\u00e7\u00e3o", "to": "ambiental"}, {"arrows": "to", "from": "deve", "to": "ser"}, {"arrows": "to", "from": "munic\u00edpio", "to": "fortaleza"}, {"arrows": "to", "from": "justi\u00e7a", "to": "social"}, {"arrows": "to", "from": "ecologia", "to": "urbana"}]);
+        nodes = new vis.DataSet([{"id": "partido", "label": "partido", "shape": "dot", "value": 10}, {"id": "verde", "label": "verde", "shape": "dot", "value": 10}, {"id": "meio", "label": "meio", "shape": "dot", "value": 10}, {"id": "ambiente", "label": "ambiente", "shape": "dot", "value": 10}, {"id": "pol\u00edticas", "label": "pol\u00edticas", "shape": "dot", "value": 9}, {"id": "p\u00fablicas", "label": "p\u00fablicas", "shape": "dot", "value": 9}, {"id": "economia", "label": "economia", "shape": "dot", "value": 7}, {"id": "solid\u00e1ria", "label": "solid\u00e1ria", "shape": "dot", "value": 7}, {"id": "deve", "label": "deve", "shape": "dot", "value": 6}, {"id": "ser", "label": "ser", "shape": "dot", "value": 6}, {"id": "qualidade", "label": "qualidade", "shape": "dot", "value": 6}, {"id": "vida", "label": "vida", "shape": "dot", "value": 6}, {"id": "educa\u00e7\u00e3o", "label": "educa\u00e7\u00e3o", "shape": "dot", "value": 6}, {"id": "ambiental", "label": "ambiental", "shape": "dot", "value": 6}, {"id": "justi\u00e7a", "label": "justi\u00e7a", "shape": "dot", "value": 5}, {"id": "social", "label": "social", "shape": "dot", "value": 5}, {"id": "munic\u00edpio", "label": "munic\u00edpio", "shape": "dot", "value": 5}, {"id": "fortaleza", "label": "fortaleza", "shape": "dot", "value": 5}, {"id": "valoriza\u00e7\u00e3o", "label": "valoriza\u00e7\u00e3o", "shape": "dot", "value": 4}, {"id": "profissionais", "label": "profissionais", "shape": "dot", "value": 4}, {"id": "ter", "label": "ter", "shape": "dot", "value": 4}, {"id": "guarda", "label": "guarda", "shape": "dot", "value": 4}, {"id": "municipal", "label": "municipal", "shape": "dot", "value": 4}, {"id": "devem", "label": "devem", "shape": "dot", "value": 4}, {"id": "econ\u00f4mica", "label": "econ\u00f4mica", "shape": "dot", "value": 4}, {"id": "cidade", "label": "cidade", "shape": "dot", "value": 4}, {"id": "criativa", "label": "criativa", "shape": "dot", "value": 4}, {"id": "merenda", "label": "merenda", "shape": "dot", "value": 4}, {"id": "escolar", "label": "escolar", "shape": "dot", "value": 4}, {"id": "seguran\u00e7a", "label": "seguran\u00e7a", "shape": "dot", "value": 4}, {"id": "p\u00fablica", "label": "p\u00fablica", "shape": "dot", "value": 4}, {"id": "poder", "label": "poder", "shape": "dot", "value": 4}, {"id": "p\u00fablico", "label": "p\u00fablico", "shape": "dot", "value": 4}, {"id": "mercado", "label": "mercado", "shape": "dot", "value": 4}, {"id": "trabalho", "label": "trabalho", "shape": "dot", "value": 4}, {"id": "ecologia", "label": "ecologia", "shape": "dot", "value": 4}, {"id": "urbana", "label": "urbana", "shape": "dot", "value": 4}, {"id": "toda", "label": "toda", "shape": "dot", "value": 4}, {"id": "popula\u00e7\u00e3o", "label": "popula\u00e7\u00e3o", "shape": "dot", "value": 4}, {"id": "rede", "label": "rede", "shape": "dot", "value": 4}, {"id": "diretriz", "label": "diretriz", "shape": "dot", "value": 4}, {"id": "program\u00e1tica", "label": "program\u00e1tica", "shape": "dot", "value": 4}, {"id": "recursos", "label": "recursos", "shape": "dot", "value": 4}, {"id": "naturais", "label": "naturais", "shape": "dot", "value": 4}, {"id": "gest\u00e3o", "label": "gest\u00e3o", "shape": "dot", "value": 4}, {"id": "empregos", "label": "empregos", "shape": "dot", "value": 4}, {"id": "verdes", "label": "verdes", "shape": "dot", "value": 4}, {"id": "levando", "label": "levando", "shape": "dot", "value": 4}, {"id": "considera\u00e7\u00e3o", "label": "considera\u00e7\u00e3o", "shape": "dot", "value": 4}, {"id": "cidad\u00e3o", "label": "cidad\u00e3o", "shape": "dot", "value": 3}, {"id": "fortalezense", "label": "fortalezense", "shape": "dot", "value": 3}, {"id": "programas", "label": "programas", "shape": "dot", "value": 3}, {"id": "sa\u00fade", "label": "sa\u00fade", "shape": "dot", "value": 3}, {"id": "arboriza\u00e7\u00e3o", "label": "arboriza\u00e7\u00e3o", "shape": "dot", "value": 3}, {"id": "rua", "label": "rua", "shape": "dot", "value": 3}, {"id": "sustentabilidade", "label": "sustentabilidade", "shape": "dot", "value": 3}, {"id": "pandemia", "label": "pandemia", "shape": "dot", "value": 3}, {"id": "novo", "label": "novo", "shape": "dot", "value": 3}, {"id": "parcerias", "label": "parcerias", "shape": "dot", "value": 3}, {"id": "m\u00e3o", "label": "m\u00e3o", "shape": "dot", "value": 3}, {"id": "obra", "label": "obra", "shape": "dot", "value": 3}, {"id": "inst\u00e2ncias", "label": "inst\u00e2ncias", "shape": "dot", "value": 3}, {"id": "sociais", "label": "sociais", "shape": "dot", "value": 3}, {"id": "parques", "label": "parques", "shape": "dot", "value": 3}, {"id": "infantis", "label": "infantis", "shape": "dot", "value": 3}, {"id": "racial", "label": "racial", "shape": "dot", "value": 3}, {"id": "g\u00eanero", "label": "g\u00eanero", "shape": "dot", "value": 3}, {"id": "desenvolvimento", "label": "desenvolvimento", "shape": "dot", "value": 3}, {"id": "sustent\u00e1vel", "label": "sustent\u00e1vel", "shape": "dot", "value": 3}, {"id": "coleta", "label": "coleta", "shape": "dot", "value": 3}, {"id": "seletiva", "label": "seletiva", "shape": "dot", "value": 3}, {"id": "local", "label": "local", "shape": "dot", "value": 3}, {"id": "escola", "label": "escola", "shape": "dot", "value": 3}, {"id": "nova", "label": "nova", "shape": "dot", "value": 3}, {"id": "forma", "label": "forma", "shape": "dot", "value": 3}, {"id": "coronav\u00edrus", "label": "coronav\u00edrus", "shape": "dot", "value": 3}, {"id": "urbanismo", "label": "urbanismo", "shape": "dot", "value": 3}, {"id": "privadas", "label": "privadas", "shape": "dot", "value": 3}, {"id": "diferentes", "label": "diferentes", "shape": "dot", "value": 3}, {"id": "ocupa\u00e7\u00e3o", "label": "ocupa\u00e7\u00e3o", "shape": "dot", "value": 3}, {"id": "irregular", "label": "irregular", "shape": "dot", "value": 3}, {"id": "atendimento", "label": "atendimento", "shape": "dot", "value": 3}, {"id": "pessoas", "label": "pessoas", "shape": "dot", "value": 3}, {"id": "vale", "label": "vale", "shape": "dot", "value": 3}, {"id": "ressaltar", "label": "ressaltar", "shape": "dot", "value": 3}, {"id": "equipamentos", "label": "equipamentos", "shape": "dot", "value": 3}, {"id": "p\u00fablicos", "label": "p\u00fablicos", "shape": "dot", "value": 3}, {"id": "conceito", "label": "conceito", "shape": "dot", "value": 3}, {"id": "todas", "label": "todas", "shape": "dot", "value": 3}, {"id": "\u00e1reas", "label": "\u00e1reas", "shape": "dot", "value": 3}, {"id": "queremos", "label": "queremos", "shape": "dot", "value": 3}, {"id": "escolas", "label": "escolas", "shape": "dot", "value": 3}, {"id": "pv", "label": "pv", "shape": "dot", "value": 3}, {"id": "usos", "label": "usos", "shape": "dot", "value": 3}, {"id": "m\u00faltiplos", "label": "m\u00faltiplos", "shape": "dot", "value": 3}, {"id": "pequenas", "label": "pequenas", "shape": "dot", "value": 2}, {"id": "m\u00e9dias", "label": "m\u00e9dias", "shape": "dot", "value": 2}, {"id": "materiais", "label": "materiais", "shape": "dot", "value": 2}, {"id": "alternativos", "label": "alternativos", "shape": "dot", "value": 2}, {"id": "uso", "label": "uso", "shape": "dot", "value": 2}, {"id": "artes", "label": "artes", "shape": "dot", "value": 2}, {"id": "pl\u00e1sticas", "label": "pl\u00e1sticas", "shape": "dot", "value": 2}, {"id": "todos", "label": "todos", "shape": "dot", "value": 2}, {"id": "arte", "label": "arte", "shape": "dot", "value": 2}, {"id": "cultura", "label": "cultura", "shape": "dot", "value": 2}, {"id": "pequenos", "label": "pequenos", "shape": "dot", "value": 2}, {"id": "empreendedores", "label": "empreendedores", "shape": "dot", "value": 2}, {"id": "defici\u00eancia", "label": "defici\u00eancia", "shape": "dot", "value": 2}, {"id": "todo", "label": "todo", "shape": "dot", "value": 2}, {"id": "potencial", "label": "potencial", "shape": "dot", "value": 2}, {"id": "pastas", "label": "pastas", "shape": "dot", "value": 2}, {"id": "reciclagem", "label": "reciclagem", "shape": "dot", "value": 2}, {"id": "etc", "label": "etc", "shape": "dot", "value": 2}, {"id": "forma\u00e7\u00e3o", "label": "forma\u00e7\u00e3o", "shape": "dot", "value": 2}, {"id": "continuada", "label": "continuada", "shape": "dot", "value": 2}, {"id": "cidadania", "label": "cidadania", "shape": "dot", "value": 2}, {"id": "bairros", "label": "bairros", "shape": "dot", "value": 2}, {"id": "app", "label": "app", "shape": "dot", "value": 2}, {"id": "categorias", "label": "categorias", "shape": "dot", "value": 2}, {"id": "formas", "label": "formas", "shape": "dot", "value": 2}, {"id": "discrimina\u00e7\u00e3o", "label": "discrimina\u00e7\u00e3o", "shape": "dot", "value": 2}, {"id": "sob", "label": "sob", "shape": "dot", "value": 2}, {"id": "ecodesenvolvimento", "label": "ecodesenvolvimento", "shape": "dot", "value": 2}, {"id": "entende", "label": "entende", "shape": "dot", "value": 2}, {"id": "ar", "label": "ar", "shape": "dot", "value": 2}, {"id": "disposi\u00e7\u00e3o", "label": "disposi\u00e7\u00e3o", "shape": "dot", "value": 2}, {"id": "adequada", "label": "adequada", "shape": "dot", "value": 2}, {"id": "lixo", "label": "lixo", "shape": "dot", "value": 2}, {"id": "org\u00e2nico", "label": "org\u00e2nico", "shape": "dot", "value": 2}, {"id": "entulho", "label": "entulho", "shape": "dot", "value": 2}, {"id": "aproveitamento", "label": "aproveitamento", "shape": "dot", "value": 2}, {"id": "pol\u00edtica", "label": "pol\u00edtica", "shape": "dot", "value": 2}, {"id": "gases", "label": "gases", "shape": "dot", "value": 2}, {"id": "efeito", "label": "efeito", "shape": "dot", "value": 2}, {"id": "voltando", "label": "voltando", "shape": "dot", "value": 2}, {"id": "moderna", "label": "moderna", "shape": "dot", "value": 2}, {"id": "desde", "label": "desde", "shape": "dot", "value": 2}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "partido", "to": "verde"}, {"arrows": "to", "from": "meio", "to": "ambiente"}, {"arrows": "to", "from": "pol\u00edticas", "to": "p\u00fablicas"}, {"arrows": "to", "from": "economia", "to": "solid\u00e1ria"}, {"arrows": "to", "from": "deve", "to": "ser"}, {"arrows": "to", "from": "qualidade", "to": "vida"}, {"arrows": "to", "from": "educa\u00e7\u00e3o", "to": "ambiental"}, {"arrows": "to", "from": "justi\u00e7a", "to": "social"}, {"arrows": "to", "from": "munic\u00edpio", "to": "fortaleza"}, {"arrows": "to", "from": "valoriza\u00e7\u00e3o", "to": "profissionais"}, {"arrows": "to", "from": "profissionais", "to": "educa\u00e7\u00e3o"}, {"arrows": "to", "from": "deve", "to": "ter"}, {"arrows": "to", "from": "guarda", "to": "municipal"}, {"arrows": "to", "from": "devem", "to": "ser"}, {"arrows": "to", "from": "econ\u00f4mica", "to": "social"}, {"arrows": "to", "from": "cidade", "to": "criativa"}, {"arrows": "to", "from": "merenda", "to": "escolar"}, {"arrows": "to", "from": "seguran\u00e7a", "to": "p\u00fablica"}, {"arrows": "to", "from": "poder", "to": "p\u00fablico"}, {"arrows": "to", "from": "economia", "to": "verde"}, {"arrows": "to", "from": "mercado", "to": "trabalho"}, {"arrows": "to", "from": "ecologia", "to": "urbana"}, {"arrows": "to", "from": "toda", "to": "popula\u00e7\u00e3o"}, {"arrows": "to", "from": "rede", "to": "municipal"}, {"arrows": "to", "from": "diretriz", "to": "program\u00e1tica"}, {"arrows": "to", "from": "recursos", "to": "naturais"}, {"arrows": "to", "from": "gest\u00e3o", "to": "p\u00fablica"}, {"arrows": "to", "from": "empregos", "to": "verdes"}, {"arrows": "to", "from": "levando", "to": "considera\u00e7\u00e3o"}, {"arrows": "to", "from": "cidad\u00e3o", "to": "fortalezense"}, {"arrows": "to", "from": "programas", "to": "sa\u00fade"}, {"arrows": "to", "from": "arboriza\u00e7\u00e3o", "to": "rua"}, {"arrows": "to", "from": "social", "to": "ambiental"}, {"arrows": "to", "from": "sustentabilidade", "to": "econ\u00f4mica"}, {"arrows": "to", "from": "pandemia", "to": "novo"}, {"arrows": "to", "from": "parcerias", "to": "p\u00fablico"}, {"arrows": "to", "from": "fortaleza", "to": "verde"}, {"arrows": "to", "from": "m\u00e3o", "to": "obra"}, {"arrows": "to", "from": "inst\u00e2ncias", "to": "sociais"}, {"arrows": "to", "from": "verde", "to": "fortaleza"}, {"arrows": "to", "from": "parques", "to": "infantis"}, {"arrows": "to", "from": "sa\u00fade", "to": "ambiental"}, {"arrows": "to", "from": "racial", "to": "g\u00eanero"}, {"arrows": "to", "from": "economia", "to": "criativa"}, {"arrows": "to", "from": "desenvolvimento", "to": "sustent\u00e1vel"}, {"arrows": "to", "from": "coleta", "to": "seletiva"}, {"arrows": "to", "from": "cidade", "to": "verde"}, {"arrows": "to", "from": "desenvolvimento", "to": "local"}, {"arrows": "to", "from": "escola", "to": "sustent\u00e1vel"}, {"arrows": "to", "from": "meio", "to": "recursos"}, {"arrows": "to", "from": "nova", "to": "forma"}, {"arrows": "to", "from": "novo", "to": "coronav\u00edrus"}, {"arrows": "to", "from": "urbanismo", "to": "verde"}, {"arrows": "to", "from": "p\u00fablico", "to": "privadas"}, {"arrows": "to", "from": "diferentes", "to": "inst\u00e2ncias"}, {"arrows": "to", "from": "ocupa\u00e7\u00e3o", "to": "irregular"}, {"arrows": "to", "from": "atendimento", "to": "pessoas"}, {"arrows": "to", "from": "vale", "to": "ressaltar"}, {"arrows": "to", "from": "equipamentos", "to": "p\u00fablicos"}, {"arrows": "to", "from": "conceito", "to": "cidade"}, {"arrows": "to", "from": "todas", "to": "\u00e1reas"}, {"arrows": "to", "from": "cidade", "to": "queremos"}, {"arrows": "to", "from": "escolas", "to": "educa\u00e7\u00e3o"}, {"arrows": "to", "from": "pv", "to": "educa\u00e7\u00e3o"}, {"arrows": "to", "from": "sa\u00fade", "to": "p\u00fablica"}, {"arrows": "to", "from": "usos", "to": "m\u00faltiplos"}, {"arrows": "to", "from": "pequenas", "to": "m\u00e9dias"}, {"arrows": "to", "from": "materiais", "to": "alternativos"}, {"arrows": "to", "from": "meio", "to": "uso"}, {"arrows": "to", "from": "artes", "to": "pl\u00e1sticas"}, {"arrows": "to", "from": "todos", "to": "parques"}, {"arrows": "to", "from": "arte", "to": "cultura"}, {"arrows": "to", "from": "economia", "to": "sustent\u00e1vel"}, {"arrows": "to", "from": "pequenos", "to": "empreendedores"}, {"arrows": "to", "from": "pessoas", "to": "defici\u00eancia"}, {"arrows": "to", "from": "todas", "to": "escolas"}, {"arrows": "to", "from": "todo", "to": "potencial"}, {"arrows": "to", "from": "todas", "to": "pastas"}, {"arrows": "to", "from": "reciclagem", "to": "etc"}, {"arrows": "to", "from": "forma\u00e7\u00e3o", "to": "continuada"}, {"arrows": "to", "from": "forma\u00e7\u00e3o", "to": "cidadania"}, {"arrows": "to", "from": "todos", "to": "bairros"}, {"arrows": "to", "from": "meio", "to": "app"}, {"arrows": "to", "from": "categorias", "to": "sa\u00fade"}, {"arrows": "to", "from": "formas", "to": "discrimina\u00e7\u00e3o"}, {"arrows": "to", "from": "fortaleza", "to": "sob"}, {"arrows": "to", "from": "ecodesenvolvimento", "to": "entende"}, {"arrows": "to", "from": "p\u00fablico", "to": "deve"}, {"arrows": "to", "from": "qualidade", "to": "ar"}, {"arrows": "to", "from": "disposi\u00e7\u00e3o", "to": "adequada"}, {"arrows": "to", "from": "lixo", "to": "org\u00e2nico"}, {"arrows": "to", "from": "lixo", "to": "entulho"}, {"arrows": "to", "from": "lixo", "to": "aproveitamento"}, {"arrows": "to", "from": "p\u00fablicos", "to": "qualidade"}, {"arrows": "to", "from": "pol\u00edtica", "to": "sa\u00fade"}, {"arrows": "to", "from": "gases", "to": "efeito"}, {"arrows": "to", "from": "p\u00fablicas", "to": "voltando"}, {"arrows": "to", "from": "fortaleza", "to": "cidade"}, {"arrows": "to", "from": "gest\u00e3o", "to": "moderna"}, {"arrows": "to", "from": "popula\u00e7\u00e3o", "to": "desde"}]);
 
         // adding nodes and edges to the graph
         data = {nodes: nodes, edges: edges};
@@ -92,6 +170,24 @@
         
 
 
+        
+        network.on("stabilizationProgress", function(params) {
+      		document.getElementById('loadingBar').removeAttribute("style");
+	        var maxWidth = 496;
+	        var minWidth = 20;
+	        var widthFactor = params.iterations/params.total;
+	        var width = Math.max(minWidth,maxWidth * widthFactor);
+
+	        document.getElementById('bar').style.width = width + 'px';
+	        document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+	    });
+	    network.once("stabilizationIterationsDone", function() {
+	        document.getElementById('text').innerHTML = '100%';
+	        document.getElementById('bar').style.width = '496px';
+	        document.getElementById('loadingBar').style.opacity = 0;
+	        // really clean the dom element
+	        setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+	    });
         
 
         return network;

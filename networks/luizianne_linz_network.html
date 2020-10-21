@@ -18,6 +18,75 @@
         }
 
         
+        #loadingBar {
+            position:absolute;
+            top:0px;
+            left:0px;
+            width: 1250;
+            height: 800px;
+            background-color:rgba(200,200,200,0.8);
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            opacity:1;
+        }
+
+        #bar {
+            position:absolute;
+            top:0px;
+            left:0px;
+            width:20px;
+            height:20px;
+            margin:auto auto auto auto;
+            border-radius:11px;
+            border:2px solid rgba(30,30,30,0.05);
+            background: rgb(0, 173, 246); /* Old browsers */
+            box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+        }
+
+        #border {
+            position:absolute;
+            top:10px;
+            left:10px;
+            width:500px;
+            height:23px;
+            margin:auto auto auto auto;
+            box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+            border-radius:10px;
+        }
+
+        #text {
+            position:absolute;
+            top:8px;
+            left:530px;
+            width:30px;
+            height:50px;
+            margin:auto auto auto auto;
+            font-size:22px;
+            color: #000000;
+        }
+
+        div.outerBorder {
+            position:relative;
+            top:400px;
+            width:600px;
+            height:44px;
+            margin:auto auto auto auto;
+            border:8px solid rgba(0,0,0,0.1);
+            background: rgb(252,252,252); /* Old browsers */
+            background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+            border-radius:72px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+        
 
         
 
@@ -28,6 +97,15 @@
 
 <body>
 <div id = "mynetwork"></div>
+
+<div id="loadingBar">
+    <div class="outerBorder">
+        <div id="text">0%</div>
+        <div id="border">
+            <div id="bar"></div>
+        </div>
+    </div>
+</div>
 
 
 <script type="text/javascript">
@@ -47,8 +125,8 @@
         
 
         // parsing and collecting nodes and edges from the python
-        nodes = new vis.DataSet([{"id": "pol\u00edticas", "label": "pol\u00edticas", "shape": "dot", "value": 8}, {"id": "p\u00fablicas", "label": "p\u00fablicas", "shape": "dot", "value": 8}, {"id": "baixa", "label": "baixa", "shape": "dot", "value": 6}, {"id": "renda", "label": "renda", "shape": "dot", "value": 6}, {"id": "pessoal", "label": "pessoal", "shape": "dot", "value": 5}, {"id": "m\u00e9dia", "label": "m\u00e9dia", "shape": "dot", "value": 5}, {"id": "direito", "label": "direito", "shape": "dot", "value": 5}, {"id": "cidade", "label": "cidade", "shape": "dot", "value": 5}, {"id": "covid", "label": "covid", "shape": "dot", "value": 5}, {"id": "19", "label": "19", "shape": "dot", "value": 5}, {"id": "recupera\u00e7\u00e3o", "label": "recupera\u00e7\u00e3o", "shape": "dot", "value": 4}, {"id": "empregos", "label": "empregos", "shape": "dot", "value": 4}, {"id": "qualidade", "label": "qualidade", "shape": "dot", "value": 4}, {"id": "vida", "label": "vida", "shape": "dot", "value": 4}, {"id": "deve", "label": "deve", "shape": "dot", "value": 4}, {"id": "ser", "label": "ser", "shape": "dot", "value": 4}, {"id": "fortaleza", "label": "fortaleza", "shape": "dot", "value": 4}]);
-        edges = new vis.DataSet([{"arrows": "to", "from": "pol\u00edticas", "to": "p\u00fablicas"}, {"arrows": "to", "from": "baixa", "to": "renda"}, {"arrows": "to", "from": "renda", "to": "pessoal"}, {"arrows": "to", "from": "renda", "to": "m\u00e9dia"}, {"arrows": "to", "from": "direito", "to": "cidade"}, {"arrows": "to", "from": "covid", "to": "19"}, {"arrows": "to", "from": "recupera\u00e7\u00e3o", "to": "empregos"}, {"arrows": "to", "from": "qualidade", "to": "vida"}, {"arrows": "to", "from": "deve", "to": "ser"}, {"arrows": "to", "from": "cidade", "to": "fortaleza"}]);
+        nodes = new vis.DataSet([{"id": "pol\u00edticas", "label": "pol\u00edticas", "shape": "dot", "value": 8}, {"id": "p\u00fablicas", "label": "p\u00fablicas", "shape": "dot", "value": 8}, {"id": "baixa", "label": "baixa", "shape": "dot", "value": 6}, {"id": "renda", "label": "renda", "shape": "dot", "value": 6}, {"id": "covid", "label": "covid", "shape": "dot", "value": 5}, {"id": "19", "label": "19", "shape": "dot", "value": 5}, {"id": "direito", "label": "direito", "shape": "dot", "value": 5}, {"id": "cidade", "label": "cidade", "shape": "dot", "value": 5}, {"id": "m\u00e9dia", "label": "m\u00e9dia", "shape": "dot", "value": 5}, {"id": "pessoal", "label": "pessoal", "shape": "dot", "value": 5}, {"id": "deve", "label": "deve", "shape": "dot", "value": 4}, {"id": "ser", "label": "ser", "shape": "dot", "value": 4}, {"id": "bairros", "label": "bairros", "shape": "dot", "value": 4}, {"id": "ricos", "label": "ricos", "shape": "dot", "value": 4}, {"id": "inclus\u00e3o", "label": "inclus\u00e3o", "shape": "dot", "value": 4}, {"id": "social", "label": "social", "shape": "dot", "value": 4}, {"id": "recupera\u00e7\u00e3o", "label": "recupera\u00e7\u00e3o", "shape": "dot", "value": 4}, {"id": "empregos", "label": "empregos", "shape": "dot", "value": 4}, {"id": "qualidade", "label": "qualidade", "shape": "dot", "value": 4}, {"id": "vida", "label": "vida", "shape": "dot", "value": 4}, {"id": "desenvolvimento", "label": "desenvolvimento", "shape": "dot", "value": 4}, {"id": "econ\u00f4mico", "label": "econ\u00f4mico", "shape": "dot", "value": 4}, {"id": "fortaleza", "label": "fortaleza", "shape": "dot", "value": 4}, {"id": "pol\u00edtica", "label": "pol\u00edtica", "shape": "dot", "value": 3}, {"id": "p\u00fablica", "label": "p\u00fablica", "shape": "dot", "value": 3}, {"id": "conjunto", "label": "conjunto", "shape": "dot", "value": 3}, {"id": "cear\u00e1", "label": "cear\u00e1", "shape": "dot", "value": 3}, {"id": "economia", "label": "economia", "shape": "dot", "value": 3}, {"id": "densidade", "label": "densidade", "shape": "dot", "value": 3}, {"id": "populacional", "label": "populacional", "shape": "dot", "value": 3}, {"id": "infraestrutura", "label": "infraestrutura", "shape": "dot", "value": 3}, {"id": "ecol\u00f3gica", "label": "ecol\u00f3gica", "shape": "dot", "value": 3}, {"id": "humana", "label": "humana", "shape": "dot", "value": 3}, {"id": "universaliza\u00e7\u00e3o", "label": "universaliza\u00e7\u00e3o", "shape": "dot", "value": 3}, {"id": "humaniza\u00e7\u00e3o", "label": "humaniza\u00e7\u00e3o", "shape": "dot", "value": 3}, {"id": "criativa", "label": "criativa", "shape": "dot", "value": 3}, {"id": "bom", "label": "bom", "shape": "dot", "value": 3}, {"id": "futuro", "label": "futuro", "shape": "dot", "value": 3}, {"id": "todos", "label": "todos", "shape": "dot", "value": 3}, {"id": "todas", "label": "todas", "shape": "dot", "value": 3}, {"id": "urbana", "label": "urbana", "shape": "dot", "value": 3}, {"id": "redu\u00e7\u00e3o", "label": "redu\u00e7\u00e3o", "shape": "dot", "value": 3}, {"id": "vulnerabilidade", "label": "vulnerabilidade", "shape": "dot", "value": 3}, {"id": "regional", "label": "regional", "shape": "dot", "value": 3}, {"id": "administrativa", "label": "administrativa", "shape": "dot", "value": 3}, {"id": "praia", "label": "praia", "shape": "dot", "value": 3}, {"id": "iracema", "label": "iracema", "shape": "dot", "value": 3}, {"id": "reconstru\u00e7\u00e3o", "label": "reconstru\u00e7\u00e3o", "shape": "dot", "value": 3}, {"id": "coc\u00f3", "label": "coc\u00f3", "shape": "dot", "value": 3}, {"id": "pacoti", "label": "pacoti", "shape": "dot", "value": 3}, {"id": "partido", "label": "partido", "shape": "dot", "value": 3}, {"id": "trabalhadores", "label": "trabalhadores", "shape": "dot", "value": 3}, {"id": "ambiental", "label": "ambiental", "shape": "dot", "value": 3}, {"id": "pandemia", "label": "pandemia", "shape": "dot", "value": 3}, {"id": "participa\u00e7\u00e3o", "label": "participa\u00e7\u00e3o", "shape": "dot", "value": 3}, {"id": "transpar\u00eancia", "label": "transpar\u00eancia", "shape": "dot", "value": 3}, {"id": "investimentos", "label": "investimentos", "shape": "dot", "value": 3}, {"id": "p\u00fablicos", "label": "p\u00fablicos", "shape": "dot", "value": 3}, {"id": "educa\u00e7\u00e3o", "label": "educa\u00e7\u00e3o", "shape": "dot", "value": 3}, {"id": "popula\u00e7\u00e3o", "label": "popula\u00e7\u00e3o", "shape": "dot", "value": 2}, {"id": "carente", "label": "carente", "shape": "dot", "value": 2}, {"id": "bairro", "label": "bairro", "shape": "dot", "value": 2}, {"id": "f\u00e1tima", "label": "f\u00e1tima", "shape": "dot", "value": 2}, {"id": "pode", "label": "pode", "shape": "dot", "value": 2}, {"id": "gest\u00e3o", "label": "gest\u00e3o", "shape": "dot", "value": 2}, {"id": "inovadora", "label": "inovadora", "shape": "dot", "value": 2}, {"id": "dentro", "label": "dentro", "shape": "dot", "value": 2}, {"id": "crucial", "label": "crucial", "shape": "dot", "value": 2}, {"id": "luta", "label": "luta", "shape": "dot", "value": 2}, {"id": "emprego", "label": "emprego", "shape": "dot", "value": 2}, {"id": "democracia", "label": "democracia", "shape": "dot", "value": 2}, {"id": "dem\u00f3crito", "label": "dem\u00f3crito", "shape": "dot", "value": 2}, {"id": "rocha", "label": "rocha", "shape": "dot", "value": 2}, {"id": "informal", "label": "informal", "shape": "dot", "value": 2}, {"id": "cristo", "label": "cristo", "shape": "dot", "value": 2}, {"id": "redentor", "label": "redentor", "shape": "dot", "value": 2}, {"id": "bacias", "label": "bacias", "shape": "dot", "value": 2}, {"id": "hidrogr\u00e1ficas", "label": "hidrogr\u00e1ficas", "shape": "dot", "value": 2}, {"id": "acontecer", "label": "acontecer", "shape": "dot", "value": 2}, {"id": "assist\u00eancia", "label": "assist\u00eancia", "shape": "dot", "value": 2}, {"id": "reduzir", "label": "reduzir", "shape": "dot", "value": 2}, {"id": "inseguran\u00e7a", "label": "inseguran\u00e7a", "shape": "dot", "value": 2}, {"id": "melhores", "label": "melhores", "shape": "dot", "value": 2}, {"id": "servi\u00e7os", "label": "servi\u00e7os", "shape": "dot", "value": 2}, {"id": "menor", "label": "menor", "shape": "dot", "value": 2}, {"id": "granja", "label": "granja", "shape": "dot", "value": 2}, {"id": "portugal", "label": "portugal", "shape": "dot", "value": 2}, {"id": "mercado", "label": "mercado", "shape": "dot", "value": 2}, {"id": "imobili\u00e1rio", "label": "imobili\u00e1rio", "shape": "dot", "value": 2}, {"id": "crise", "label": "crise", "shape": "dot", "value": 2}, {"id": "sanit\u00e1ria", "label": "sanit\u00e1ria", "shape": "dot", "value": 2}, {"id": "grandes", "label": "grandes", "shape": "dot", "value": 2}, {"id": "car\u00eancias", "label": "car\u00eancias", "shape": "dot", "value": 2}, {"id": "metropolitana", "label": "metropolitana", "shape": "dot", "value": 2}, {"id": "eixos", "label": "eixos", "shape": "dot", "value": 2}, {"id": "estrat\u00e9gicos", "label": "estrat\u00e9gicos", "shape": "dot", "value": 2}, {"id": "regi\u00e3o", "label": "regi\u00e3o", "shape": "dot", "value": 2}, {"id": "condi\u00e7\u00f5es", "label": "condi\u00e7\u00f5es", "shape": "dot", "value": 2}, {"id": "decr\u00e9scimo", "label": "decr\u00e9scimo", "shape": "dot", "value": 2}, {"id": "hist\u00f3rico", "label": "hist\u00f3rico", "shape": "dot", "value": 2}, {"id": "cultural", "label": "cultural", "shape": "dot", "value": 2}, {"id": "governo", "label": "governo", "shape": "dot", "value": 2}, {"id": "federal", "label": "federal", "shape": "dot", "value": 2}, {"id": "bacia", "label": "bacia", "shape": "dot", "value": 2}, {"id": "sa\u00fade", "label": "sa\u00fade", "shape": "dot", "value": 2}, {"id": "milton", "label": "milton", "shape": "dot", "value": 2}, {"id": "santos", "label": "santos", "shape": "dot", "value": 2}, {"id": "poder", "label": "poder", "shape": "dot", "value": 2}, {"id": "p\u00fablico", "label": "p\u00fablico", "shape": "dot", "value": 2}, {"id": "recursos", "label": "recursos", "shape": "dot", "value": 2}, {"id": "aquisitivo", "label": "aquisitivo", "shape": "dot", "value": 2}, {"id": "rios", "label": "rios", "shape": "dot", "value": 2}, {"id": "moradia", "label": "moradia", "shape": "dot", "value": 2}, {"id": "popular", "label": "popular", "shape": "dot", "value": 2}, {"id": "desigual", "label": "desigual", "shape": "dot", "value": 2}, {"id": "numerosa", "label": "numerosa", "shape": "dot", "value": 2}, {"id": "ii", "label": "ii", "shape": "dot", "value": 2}, {"id": "socioecon\u00f4micas", "label": "socioecon\u00f4micas", "shape": "dot", "value": 2}, {"id": "patrim\u00f4nio", "label": "patrim\u00f4nio", "shape": "dot", "value": 2}, {"id": "condi\u00e7\u00e3o", "label": "condi\u00e7\u00e3o", "shape": "dot", "value": 2}, {"id": "fundamental", "label": "fundamental", "shape": "dot", "value": 2}, {"id": "seguran\u00e7a", "label": "seguran\u00e7a", "shape": "dot", "value": 2}, {"id": "ocupa\u00e7\u00e3o", "label": "ocupa\u00e7\u00e3o", "shape": "dot", "value": 2}, {"id": "antiga", "label": "antiga", "shape": "dot", "value": 2}, {"id": "formal", "label": "formal", "shape": "dot", "value": 2}, {"id": "farias", "label": "farias", "shape": "dot", "value": 2}, {"id": "brito", "label": "brito", "shape": "dot", "value": 2}, {"id": "fam\u00edlias", "label": "fam\u00edlias", "shape": "dot", "value": 2}, {"id": "multigeracionais", "label": "multigeracionais", "shape": "dot", "value": 2}, {"id": "compromisso", "label": "compromisso", "shape": "dot", "value": 2}, {"id": "parque", "label": "parque", "shape": "dot", "value": 2}, {"id": "presidente", "label": "presidente", "shape": "dot", "value": 2}, {"id": "ambientais", "label": "ambientais", "shape": "dot", "value": 2}, {"id": "classe", "label": "classe", "shape": "dot", "value": 2}, {"id": "outro", "label": "outro", "shape": "dot", "value": 2}, {"id": "lado", "label": "lado", "shape": "dot", "value": 2}, {"id": "vi", "label": "vi", "shape": "dot", "value": 2}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "pol\u00edticas", "to": "p\u00fablicas"}, {"arrows": "to", "from": "baixa", "to": "renda"}, {"arrows": "to", "from": "covid", "to": "19"}, {"arrows": "to", "from": "direito", "to": "cidade"}, {"arrows": "to", "from": "renda", "to": "m\u00e9dia"}, {"arrows": "to", "from": "renda", "to": "pessoal"}, {"arrows": "to", "from": "deve", "to": "ser"}, {"arrows": "to", "from": "bairros", "to": "ricos"}, {"arrows": "to", "from": "inclus\u00e3o", "to": "social"}, {"arrows": "to", "from": "recupera\u00e7\u00e3o", "to": "empregos"}, {"arrows": "to", "from": "qualidade", "to": "vida"}, {"arrows": "to", "from": "desenvolvimento", "to": "econ\u00f4mico"}, {"arrows": "to", "from": "cidade", "to": "fortaleza"}, {"arrows": "to", "from": "pol\u00edtica", "to": "p\u00fablica"}, {"arrows": "to", "from": "conjunto", "to": "cear\u00e1"}, {"arrows": "to", "from": "economia", "to": "recupera\u00e7\u00e3o"}, {"arrows": "to", "from": "densidade", "to": "populacional"}, {"arrows": "to", "from": "infraestrutura", "to": "ecol\u00f3gica"}, {"arrows": "to", "from": "m\u00e9dia", "to": "pessoal"}, {"arrows": "to", "from": "vida", "to": "humana"}, {"arrows": "to", "from": "universaliza\u00e7\u00e3o", "to": "humaniza\u00e7\u00e3o"}, {"arrows": "to", "from": "economia", "to": "criativa"}, {"arrows": "to", "from": "bom", "to": "futuro"}, {"arrows": "to", "from": "todos", "to": "todas"}, {"arrows": "to", "from": "vida", "to": "urbana"}, {"arrows": "to", "from": "redu\u00e7\u00e3o", "to": "vulnerabilidade"}, {"arrows": "to", "from": "regional", "to": "administrativa"}, {"arrows": "to", "from": "praia", "to": "iracema"}, {"arrows": "to", "from": "reconstru\u00e7\u00e3o", "to": "economia"}, {"arrows": "to", "from": "coc\u00f3", "to": "pacoti"}, {"arrows": "to", "from": "partido", "to": "trabalhadores"}, {"arrows": "to", "from": "urbana", "to": "ambiental"}, {"arrows": "to", "from": "pandemia", "to": "covid"}, {"arrows": "to", "from": "participa\u00e7\u00e3o", "to": "transpar\u00eancia"}, {"arrows": "to", "from": "investimentos", "to": "p\u00fablicos"}, {"arrows": "to", "from": "educa\u00e7\u00e3o", "to": "desenvolvimento"}, {"arrows": "to", "from": "popula\u00e7\u00e3o", "to": "baixa"}, {"arrows": "to", "from": "popula\u00e7\u00e3o", "to": "carente"}, {"arrows": "to", "from": "bairro", "to": "f\u00e1tima"}, {"arrows": "to", "from": "pode", "to": "ser"}, {"arrows": "to", "from": "gest\u00e3o", "to": "inovadora"}, {"arrows": "to", "from": "renda", "to": "dentro"}, {"arrows": "to", "from": "crucial", "to": "luta"}, {"arrows": "to", "from": "educa\u00e7\u00e3o", "to": "ambiental"}, {"arrows": "to", "from": "renda", "to": "emprego"}, {"arrows": "to", "from": "democracia", "to": "participa\u00e7\u00e3o"}, {"arrows": "to", "from": "dem\u00f3crito", "to": "rocha"}, {"arrows": "to", "from": "renda", "to": "fortaleza"}, {"arrows": "to", "from": "emprego", "to": "informal"}, {"arrows": "to", "from": "cristo", "to": "redentor"}, {"arrows": "to", "from": "bacias", "to": "hidrogr\u00e1ficas"}, {"arrows": "to", "from": "urbana", "to": "acontecer"}, {"arrows": "to", "from": "assist\u00eancia", "to": "social"}, {"arrows": "to", "from": "reduzir", "to": "inseguran\u00e7a"}, {"arrows": "to", "from": "melhores", "to": "servi\u00e7os"}, {"arrows": "to", "from": "menor", "to": "renda"}, {"arrows": "to", "from": "granja", "to": "portugal"}, {"arrows": "to", "from": "mercado", "to": "imobili\u00e1rio"}, {"arrows": "to", "from": "crise", "to": "sanit\u00e1ria"}, {"arrows": "to", "from": "grandes", "to": "car\u00eancias"}, {"arrows": "to", "from": "metropolitana", "to": "fortaleza"}, {"arrows": "to", "from": "eixos", "to": "estrat\u00e9gicos"}, {"arrows": "to", "from": "regi\u00e3o", "to": "metropolitana"}, {"arrows": "to", "from": "melhores", "to": "condi\u00e7\u00f5es"}, {"arrows": "to", "from": "decr\u00e9scimo", "to": "populacional"}, {"arrows": "to", "from": "hist\u00f3rico", "to": "cultural"}, {"arrows": "to", "from": "governo", "to": "federal"}, {"arrows": "to", "from": "bacia", "to": "coc\u00f3"}, {"arrows": "to", "from": "educa\u00e7\u00e3o", "to": "sa\u00fade"}, {"arrows": "to", "from": "milton", "to": "santos"}, {"arrows": "to", "from": "poder", "to": "p\u00fablico"}, {"arrows": "to", "from": "recursos", "to": "p\u00fablicos"}, {"arrows": "to", "from": "poder", "to": "aquisitivo"}, {"arrows": "to", "from": "bacias", "to": "rios"}, {"arrows": "to", "from": "moradia", "to": "popular"}, {"arrows": "to", "from": "cidade", "to": "desigual"}, {"arrows": "to", "from": "numerosa", "to": "popula\u00e7\u00e3o"}, {"arrows": "to", "from": "cear\u00e1", "to": "ii"}, {"arrows": "to", "from": "condi\u00e7\u00f5es", "to": "vida"}, {"arrows": "to", "from": "condi\u00e7\u00f5es", "to": "socioecon\u00f4micas"}, {"arrows": "to", "from": "condi\u00e7\u00f5es", "to": "moradia"}, {"arrows": "to", "from": "patrim\u00f4nio", "to": "hist\u00f3rico"}, {"arrows": "to", "from": "condi\u00e7\u00e3o", "to": "fundamental"}, {"arrows": "to", "from": "sa\u00fade", "to": "seguran\u00e7a"}, {"arrows": "to", "from": "ocupa\u00e7\u00e3o", "to": "antiga"}, {"arrows": "to", "from": "ocupa\u00e7\u00e3o", "to": "formal"}, {"arrows": "to", "from": "participa\u00e7\u00e3o", "to": "social"}, {"arrows": "to", "from": "cidade", "to": "deve"}, {"arrows": "to", "from": "bairros", "to": "ocupa\u00e7\u00e3o"}, {"arrows": "to", "from": "cidade", "to": "educa\u00e7\u00e3o"}, {"arrows": "to", "from": "farias", "to": "brito"}, {"arrows": "to", "from": "fam\u00edlias", "to": "multigeracionais"}, {"arrows": "to", "from": "compromisso", "to": "social"}, {"arrows": "to", "from": "parque", "to": "presidente"}, {"arrows": "to", "from": "parque", "to": "iracema"}, {"arrows": "to", "from": "servi\u00e7os", "to": "p\u00fablicos"}, {"arrows": "to", "from": "servi\u00e7os", "to": "ambientais"}, {"arrows": "to", "from": "classe", "to": "m\u00e9dia"}, {"arrows": "to", "from": "outro", "to": "lado"}, {"arrows": "to", "from": "ser", "to": "vi"}]);
 
         // adding nodes and edges to the graph
         data = {nodes: nodes, edges: edges};
@@ -92,6 +170,24 @@
         
 
 
+        
+        network.on("stabilizationProgress", function(params) {
+      		document.getElementById('loadingBar').removeAttribute("style");
+	        var maxWidth = 496;
+	        var minWidth = 20;
+	        var widthFactor = params.iterations/params.total;
+	        var width = Math.max(minWidth,maxWidth * widthFactor);
+
+	        document.getElementById('bar').style.width = width + 'px';
+	        document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+	    });
+	    network.once("stabilizationIterationsDone", function() {
+	        document.getElementById('text').innerHTML = '100%';
+	        document.getElementById('bar').style.width = '496px';
+	        document.getElementById('loadingBar').style.opacity = 0;
+	        // really clean the dom element
+	        setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+	    });
         
 
         return network;

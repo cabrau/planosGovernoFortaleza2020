@@ -18,6 +18,75 @@
         }
 
         
+        #loadingBar {
+            position:absolute;
+            top:0px;
+            left:0px;
+            width: 1250;
+            height: 800px;
+            background-color:rgba(200,200,200,0.8);
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            opacity:1;
+        }
+
+        #bar {
+            position:absolute;
+            top:0px;
+            left:0px;
+            width:20px;
+            height:20px;
+            margin:auto auto auto auto;
+            border-radius:11px;
+            border:2px solid rgba(30,30,30,0.05);
+            background: rgb(0, 173, 246); /* Old browsers */
+            box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+        }
+
+        #border {
+            position:absolute;
+            top:10px;
+            left:10px;
+            width:500px;
+            height:23px;
+            margin:auto auto auto auto;
+            box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+            border-radius:10px;
+        }
+
+        #text {
+            position:absolute;
+            top:8px;
+            left:530px;
+            width:30px;
+            height:50px;
+            margin:auto auto auto auto;
+            font-size:22px;
+            color: #000000;
+        }
+
+        div.outerBorder {
+            position:relative;
+            top:400px;
+            width:600px;
+            height:44px;
+            margin:auto auto auto auto;
+            border:8px solid rgba(0,0,0,0.1);
+            background: rgb(252,252,252); /* Old browsers */
+            background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+            border-radius:72px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+        
 
         
 
@@ -28,6 +97,15 @@
 
 <body>
 <div id = "mynetwork"></div>
+
+<div id="loadingBar">
+    <div class="outerBorder">
+        <div id="text">0%</div>
+        <div id="border">
+            <div id="bar"></div>
+        </div>
+    </div>
+</div>
 
 
 <script type="text/javascript">
@@ -47,8 +125,8 @@
         
 
         // parsing and collecting nodes and edges from the python
-        nodes = new vis.DataSet([{"id": "pol\u00edticas", "label": "pol\u00edticas", "shape": "dot", "value": 13}, {"id": "p\u00fablicas", "label": "p\u00fablicas", "shape": "dot", "value": 13}, {"id": "amplo", "label": "amplo", "shape": "dot", "value": 11}, {"id": "programa", "label": "programa", "shape": "dot", "value": 11}, {"id": "territ\u00f3rios", "label": "territ\u00f3rios", "shape": "dot", "value": 6}, {"id": "gest\u00e3o", "label": "gest\u00e3o", "shape": "dot", "value": 6}, {"id": "p\u00fablica", "label": "p\u00fablica", "shape": "dot", "value": 6}, {"id": "municipal", "label": "municipal", "shape": "dot", "value": 6}, {"id": "nova", "label": "nova", "shape": "dot", "value": 6}, {"id": "esporte", "label": "esporte", "shape": "dot", "value": 6}, {"id": "lazer", "label": "lazer", "shape": "dot", "value": 6}, {"id": "diretrizes", "label": "diretrizes", "shape": "dot", "value": 6}, {"id": "desenvolvimento", "label": "desenvolvimento", "shape": "dot", "value": 6}, {"id": "econ\u00f4mico", "label": "econ\u00f4mico", "shape": "dot", "value": 6}, {"id": "assist\u00eancia", "label": "assist\u00eancia", "shape": "dot", "value": 6}, {"id": "social", "label": "social", "shape": "dot", "value": 6}, {"id": "terceiro", "label": "terceiro", "shape": "dot", "value": 5}, {"id": "setor", "label": "setor", "shape": "dot", "value": 5}]);
-        edges = new vis.DataSet([{"arrows": "to", "from": "pol\u00edticas", "to": "p\u00fablicas"}, {"arrows": "to", "from": "amplo", "to": "programa"}, {"arrows": "to", "from": "territ\u00f3rios", "to": "gest\u00e3o"}, {"arrows": "to", "from": "p\u00fablica", "to": "municipal"}, {"arrows": "to", "from": "nova", "to": "gest\u00e3o"}, {"arrows": "to", "from": "esporte", "to": "lazer"}, {"arrows": "to", "from": "diretrizes", "to": "nova"}, {"arrows": "to", "from": "desenvolvimento", "to": "econ\u00f4mico"}, {"arrows": "to", "from": "assist\u00eancia", "to": "social"}, {"arrows": "to", "from": "terceiro", "to": "setor"}]);
+        nodes = new vis.DataSet([{"id": "pol\u00edticas", "label": "pol\u00edticas", "shape": "dot", "value": 13}, {"id": "p\u00fablicas", "label": "p\u00fablicas", "shape": "dot", "value": 13}, {"id": "amplo", "label": "amplo", "shape": "dot", "value": 11}, {"id": "programa", "label": "programa", "shape": "dot", "value": 11}, {"id": "desenvolvimento", "label": "desenvolvimento", "shape": "dot", "value": 6}, {"id": "econ\u00f4mico", "label": "econ\u00f4mico", "shape": "dot", "value": 6}, {"id": "esporte", "label": "esporte", "shape": "dot", "value": 6}, {"id": "lazer", "label": "lazer", "shape": "dot", "value": 6}, {"id": "territ\u00f3rios", "label": "territ\u00f3rios", "shape": "dot", "value": 6}, {"id": "gest\u00e3o", "label": "gest\u00e3o", "shape": "dot", "value": 6}, {"id": "assist\u00eancia", "label": "assist\u00eancia", "shape": "dot", "value": 6}, {"id": "social", "label": "social", "shape": "dot", "value": 6}, {"id": "p\u00fablica", "label": "p\u00fablica", "shape": "dot", "value": 6}, {"id": "municipal", "label": "municipal", "shape": "dot", "value": 6}, {"id": "diretrizes", "label": "diretrizes", "shape": "dot", "value": 6}, {"id": "nova", "label": "nova", "shape": "dot", "value": 6}, {"id": "situa\u00e7\u00e3o", "label": "situa\u00e7\u00e3o", "shape": "dot", "value": 5}, {"id": "rua", "label": "rua", "shape": "dot", "value": 5}, {"id": "novo", "label": "novo", "shape": "dot", "value": 5}, {"id": "modelo", "label": "modelo", "shape": "dot", "value": 5}, {"id": "pol\u00edtica", "label": "pol\u00edtica", "shape": "dot", "value": 5}, {"id": "ano", "label": "ano", "shape": "dot", "value": 5}, {"id": "ambiente", "label": "ambiente", "shape": "dot", "value": 5}, {"id": "escolar", "label": "escolar", "shape": "dot", "value": 5}, {"id": "terceiro", "label": "terceiro", "shape": "dot", "value": 5}, {"id": "setor", "label": "setor", "shape": "dot", "value": 5}, {"id": "promover", "label": "promover", "shape": "dot", "value": 5}, {"id": "conselho", "label": "conselho", "shape": "dot", "value": 5}, {"id": "atual", "label": "atual", "shape": "dot", "value": 4}, {"id": "eixo", "label": "eixo", "shape": "dot", "value": 4}, {"id": "pacto", "label": "pacto", "shape": "dot", "value": 4}, {"id": "forma\u00e7\u00e3o", "label": "forma\u00e7\u00e3o", "shape": "dot", "value": 4}, {"id": "trabalho", "label": "trabalho", "shape": "dot", "value": 4}, {"id": "participa\u00e7\u00e3o", "label": "participa\u00e7\u00e3o", "shape": "dot", "value": 4}, {"id": "popular", "label": "popular", "shape": "dot", "value": 4}, {"id": "meio", "label": "meio", "shape": "dot", "value": 4}, {"id": "seguran\u00e7a", "label": "seguran\u00e7a", "shape": "dot", "value": 4}, {"id": "alimentar", "label": "alimentar", "shape": "dot", "value": 4}, {"id": "pessoas", "label": "pessoas", "shape": "dot", "value": 4}, {"id": "defici\u00eancia", "label": "defici\u00eancia", "shape": "dot", "value": 4}, {"id": "cultura", "label": "cultura", "shape": "dot", "value": 4}, {"id": "implanta\u00e7\u00e3o", "label": "implanta\u00e7\u00e3o", "shape": "dot", "value": 4}, {"id": "prote\u00e7\u00e3o", "label": "prote\u00e7\u00e3o", "shape": "dot", "value": 4}, {"id": "novos", "label": "novos", "shape": "dot", "value": 4}, {"id": "neg\u00f3cios", "label": "neg\u00f3cios", "shape": "dot", "value": 4}, {"id": "guarda", "label": "guarda", "shape": "dot", "value": 3}, {"id": "centro", "label": "centro", "shape": "dot", "value": 3}, {"id": "refer\u00eancia", "label": "refer\u00eancia", "shape": "dot", "value": 3}, {"id": "mobilidade", "label": "mobilidade", "shape": "dot", "value": 3}, {"id": "infraestrutura", "label": "infraestrutura", "shape": "dot", "value": 3}, {"id": "concurso", "label": "concurso", "shape": "dot", "value": 3}, {"id": "p\u00fablico", "label": "p\u00fablico", "shape": "dot", "value": 3}, {"id": "rede", "label": "rede", "shape": "dot", "value": 3}, {"id": "fortalecer", "label": "fortalecer", "shape": "dot", "value": 3}, {"id": "conselhos", "label": "conselhos", "shape": "dot", "value": 3}, {"id": "municipais", "label": "municipais", "shape": "dot", "value": 3}, {"id": "institui\u00e7\u00f5es", "label": "institui\u00e7\u00f5es", "shape": "dot", "value": 3}, {"id": "ensino", "label": "ensino", "shape": "dot", "value": 3}, {"id": "governo", "label": "governo", "shape": "dot", "value": 3}, {"id": "participativo", "label": "participativo", "shape": "dot", "value": 3}, {"id": "animal", "label": "animal", "shape": "dot", "value": 3}, {"id": "plano", "label": "plano", "shape": "dot", "value": 3}, {"id": "prefeitura", "label": "prefeitura", "shape": "dot", "value": 3}, {"id": "fortaleza", "label": "fortaleza", "shape": "dot", "value": 3}, {"id": "popula\u00e7\u00e3o", "label": "popula\u00e7\u00e3o", "shape": "dot", "value": 3}, {"id": "zona", "label": "zona", "shape": "dot", "value": 3}, {"id": "azul", "label": "azul", "shape": "dot", "value": 3}, {"id": "garantia", "label": "garantia", "shape": "dot", "value": 3}, {"id": "acesso", "label": "acesso", "shape": "dot", "value": 3}, {"id": "universal", "label": "universal", "shape": "dot", "value": 3}, {"id": "inova\u00e7\u00e3o", "label": "inova\u00e7\u00e3o", "shape": "dot", "value": 3}, {"id": "\u00eanfase", "label": "\u00eanfase", "shape": "dot", "value": 3}, {"id": "economia", "label": "economia", "shape": "dot", "value": 3}, {"id": "criativa", "label": "criativa", "shape": "dot", "value": 3}, {"id": "primeiro", "label": "primeiro", "shape": "dot", "value": 3}, {"id": "vulnerabilidade", "label": "vulnerabilidade", "shape": "dot", "value": 2}, {"id": "atrav\u00e9s", "label": "atrav\u00e9s", "shape": "dot", "value": 2}, {"id": "sele\u00e7\u00e3o", "label": "sele\u00e7\u00e3o", "shape": "dot", "value": 2}, {"id": "fortalecimento", "label": "fortalecimento", "shape": "dot", "value": 2}, {"id": "parcerias", "label": "parcerias", "shape": "dot", "value": 2}, {"id": "foco", "label": "foco", "shape": "dot", "value": 2}, {"id": "combate", "label": "combate", "shape": "dot", "value": 2}, {"id": "centros", "label": "centros", "shape": "dot", "value": 2}, {"id": "requalifica\u00e7\u00e3o", "label": "requalifica\u00e7\u00e3o", "shape": "dot", "value": 2}, {"id": "parque", "label": "parque", "shape": "dot", "value": 2}, {"id": "atividades", "label": "atividades", "shape": "dot", "value": 2}, {"id": "econ\u00f4micas", "label": "econ\u00f4micas", "shape": "dot", "value": 2}, {"id": "atividade", "label": "atividade", "shape": "dot", "value": 2}, {"id": "tur\u00edstica", "label": "tur\u00edstica", "shape": "dot", "value": 2}, {"id": "final", "label": "final", "shape": "dot", "value": 2}, {"id": "segundo", "label": "segundo", "shape": "dot", "value": 2}, {"id": "fundo", "label": "fundo", "shape": "dot", "value": 2}, {"id": "cem", "label": "cem", "shape": "dot", "value": 2}, {"id": "mil", "label": "mil", "shape": "dot", "value": 2}, {"id": "censo", "label": "censo", "shape": "dot", "value": 2}, {"id": "seis", "label": "seis", "shape": "dot", "value": 2}, {"id": "meses", "label": "meses", "shape": "dot", "value": 2}, {"id": "servidores", "label": "servidores", "shape": "dot", "value": 2}, {"id": "p\u00fablicos", "label": "p\u00fablicos", "shape": "dot", "value": 2}, {"id": "qualifica\u00e7\u00e3o", "label": "qualifica\u00e7\u00e3o", "shape": "dot", "value": 2}, {"id": "sa\u00fade", "label": "sa\u00fade", "shape": "dot", "value": 2}, {"id": "garantindo", "label": "garantindo", "shape": "dot", "value": 2}, {"id": "cada", "label": "cada", "shape": "dot", "value": 2}, {"id": "educa\u00e7\u00e3o", "label": "educa\u00e7\u00e3o", "shape": "dot", "value": 2}, {"id": "milh\u00f5es", "label": "milh\u00f5es", "shape": "dot", "value": 2}, {"id": "reais", "label": "reais", "shape": "dot", "value": 2}, {"id": "inclusive", "label": "inclusive", "shape": "dot", "value": 2}, {"id": "saneamento", "label": "saneamento", "shape": "dot", "value": 2}, {"id": "b\u00e1sico", "label": "b\u00e1sico", "shape": "dot", "value": 2}, {"id": "aumento", "label": "aumento", "shape": "dot", "value": 2}, {"id": "oferta", "label": "oferta", "shape": "dot", "value": 2}, {"id": "simplifica\u00e7\u00e3o", "label": "simplifica\u00e7\u00e3o", "shape": "dot", "value": 2}, {"id": "processos", "label": "processos", "shape": "dot", "value": 2}, {"id": "todos", "label": "todos", "shape": "dot", "value": 2}, {"id": "capit\u00e3o", "label": "capit\u00e3o", "shape": "dot", "value": 2}, {"id": "wagner", "label": "wagner", "shape": "dot", "value": 2}, {"id": "realiza\u00e7\u00e3o", "label": "realiza\u00e7\u00e3o", "shape": "dot", "value": 2}, {"id": "cidade", "label": "cidade", "shape": "dot", "value": 2}, {"id": "planejamento", "label": "planejamento", "shape": "dot", "value": 2}, {"id": "execu\u00e7\u00e3o", "label": "execu\u00e7\u00e3o", "shape": "dot", "value": 2}, {"id": "superior", "label": "superior", "shape": "dot", "value": 2}, {"id": "ampla", "label": "ampla", "shape": "dot", "value": 2}, {"id": "cunho", "label": "cunho", "shape": "dot", "value": 2}, {"id": "religioso", "label": "religioso", "shape": "dot", "value": 2}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "pol\u00edticas", "to": "p\u00fablicas"}, {"arrows": "to", "from": "amplo", "to": "programa"}, {"arrows": "to", "from": "desenvolvimento", "to": "econ\u00f4mico"}, {"arrows": "to", "from": "esporte", "to": "lazer"}, {"arrows": "to", "from": "territ\u00f3rios", "to": "gest\u00e3o"}, {"arrows": "to", "from": "assist\u00eancia", "to": "social"}, {"arrows": "to", "from": "p\u00fablica", "to": "municipal"}, {"arrows": "to", "from": "diretrizes", "to": "nova"}, {"arrows": "to", "from": "nova", "to": "gest\u00e3o"}, {"arrows": "to", "from": "situa\u00e7\u00e3o", "to": "rua"}, {"arrows": "to", "from": "novo", "to": "modelo"}, {"arrows": "to", "from": "pol\u00edtica", "to": "municipal"}, {"arrows": "to", "from": "nova", "to": "pol\u00edtica"}, {"arrows": "to", "from": "ano", "to": "gest\u00e3o"}, {"arrows": "to", "from": "ambiente", "to": "escolar"}, {"arrows": "to", "from": "terceiro", "to": "setor"}, {"arrows": "to", "from": "municipal", "to": "esporte"}, {"arrows": "to", "from": "promover", "to": "amplo"}, {"arrows": "to", "from": "conselho", "to": "municipal"}, {"arrows": "to", "from": "atual", "to": "gest\u00e3o"}, {"arrows": "to", "from": "eixo", "to": "pacto"}, {"arrows": "to", "from": "forma\u00e7\u00e3o", "to": "trabalho"}, {"arrows": "to", "from": "participa\u00e7\u00e3o", "to": "popular"}, {"arrows": "to", "from": "meio", "to": "ambiente"}, {"arrows": "to", "from": "seguran\u00e7a", "to": "alimentar"}, {"arrows": "to", "from": "pessoas", "to": "defici\u00eancia"}, {"arrows": "to", "from": "municipal", "to": "cultura"}, {"arrows": "to", "from": "implanta\u00e7\u00e3o", "to": "programa"}, {"arrows": "to", "from": "municipal", "to": "prote\u00e7\u00e3o"}, {"arrows": "to", "from": "implanta\u00e7\u00e3o", "to": "amplo"}, {"arrows": "to", "from": "prote\u00e7\u00e3o", "to": "assist\u00eancia"}, {"arrows": "to", "from": "novos", "to": "neg\u00f3cios"}, {"arrows": "to", "from": "guarda", "to": "municipal"}, {"arrows": "to", "from": "centro", "to": "refer\u00eancia"}, {"arrows": "to", "from": "modelo", "to": "gest\u00e3o"}, {"arrows": "to", "from": "mobilidade", "to": "infraestrutura"}, {"arrows": "to", "from": "concurso", "to": "p\u00fablico"}, {"arrows": "to", "from": "ambiente", "to": "mobilidade"}, {"arrows": "to", "from": "rede", "to": "municipal"}, {"arrows": "to", "from": "fortalecer", "to": "pol\u00edticas"}, {"arrows": "to", "from": "conselhos", "to": "municipais"}, {"arrows": "to", "from": "rede", "to": "p\u00fablica"}, {"arrows": "to", "from": "institui\u00e7\u00f5es", "to": "ensino"}, {"arrows": "to", "from": "seguran\u00e7a", "to": "p\u00fablica"}, {"arrows": "to", "from": "governo", "to": "participativo"}, {"arrows": "to", "from": "prote\u00e7\u00e3o", "to": "animal"}, {"arrows": "to", "from": "plano", "to": "municipal"}, {"arrows": "to", "from": "prefeitura", "to": "fortaleza"}, {"arrows": "to", "from": "cultura", "to": "fortaleza"}, {"arrows": "to", "from": "popula\u00e7\u00e3o", "to": "situa\u00e7\u00e3o"}, {"arrows": "to", "from": "zona", "to": "azul"}, {"arrows": "to", "from": "garantia", "to": "acesso"}, {"arrows": "to", "from": "plano", "to": "governo"}, {"arrows": "to", "from": "acesso", "to": "universal"}, {"arrows": "to", "from": "econ\u00f4mico", "to": "inova\u00e7\u00e3o"}, {"arrows": "to", "from": "fortaleza", "to": "\u00eanfase"}, {"arrows": "to", "from": "economia", "to": "criativa"}, {"arrows": "to", "from": "primeiro", "to": "ano"}, {"arrows": "to", "from": "situa\u00e7\u00e3o", "to": "vulnerabilidade"}, {"arrows": "to", "from": "atrav\u00e9s", "to": "sele\u00e7\u00e3o"}, {"arrows": "to", "from": "social", "to": "fortalecimento"}, {"arrows": "to", "from": "fortalecimento", "to": "parcerias"}, {"arrows": "to", "from": "foco", "to": "combate"}, {"arrows": "to", "from": "atrav\u00e9s", "to": "implanta\u00e7\u00e3o"}, {"arrows": "to", "from": "foco", "to": "assist\u00eancia"}, {"arrows": "to", "from": "centros", "to": "forma\u00e7\u00e3o"}, {"arrows": "to", "from": "requalifica\u00e7\u00e3o", "to": "parque"}, {"arrows": "to", "from": "atividades", "to": "econ\u00f4micas"}, {"arrows": "to", "from": "atividade", "to": "tur\u00edstica"}, {"arrows": "to", "from": "municipal", "to": "fortaleza"}, {"arrows": "to", "from": "final", "to": "segundo"}, {"arrows": "to", "from": "fundo", "to": "municipal"}, {"arrows": "to", "from": "cem", "to": "mil"}, {"arrows": "to", "from": "censo", "to": "municipal"}, {"arrows": "to", "from": "seis", "to": "meses"}, {"arrows": "to", "from": "sele\u00e7\u00e3o", "to": "p\u00fablica"}, {"arrows": "to", "from": "segundo", "to": "ano"}, {"arrows": "to", "from": "fortalecimento", "to": "conselho"}, {"arrows": "to", "from": "fortaleza", "to": "foco"}, {"arrows": "to", "from": "servidores", "to": "p\u00fablicos"}, {"arrows": "to", "from": "forma\u00e7\u00e3o", "to": "qualifica\u00e7\u00e3o"}, {"arrows": "to", "from": "sa\u00fade", "to": "fortaleza"}, {"arrows": "to", "from": "fortaleza", "to": "garantindo"}, {"arrows": "to", "from": "cada", "to": "territ\u00f3rios"}, {"arrows": "to", "from": "sa\u00fade", "to": "educa\u00e7\u00e3o"}, {"arrows": "to", "from": "milh\u00f5es", "to": "reais"}, {"arrows": "to", "from": "setor", "to": "inclusive"}, {"arrows": "to", "from": "saneamento", "to": "b\u00e1sico"}, {"arrows": "to", "from": "aumento", "to": "oferta"}, {"arrows": "to", "from": "simplifica\u00e7\u00e3o", "to": "processos"}, {"arrows": "to", "from": "fortaleza", "to": "todos"}, {"arrows": "to", "from": "capit\u00e3o", "to": "wagner"}, {"arrows": "to", "from": "municipal", "to": "popula\u00e7\u00e3o"}, {"arrows": "to", "from": "realiza\u00e7\u00e3o", "to": "concurso"}, {"arrows": "to", "from": "cidade", "to": "fortaleza"}, {"arrows": "to", "from": "planejamento", "to": "execu\u00e7\u00e3o"}, {"arrows": "to", "from": "parcerias", "to": "terceiro"}, {"arrows": "to", "from": "ensino", "to": "superior"}, {"arrows": "to", "from": "promover", "to": "ampla"}, {"arrows": "to", "from": "cunho", "to": "religioso"}]);
 
         // adding nodes and edges to the graph
         data = {nodes: nodes, edges: edges};
@@ -92,6 +170,24 @@
         
 
 
+        
+        network.on("stabilizationProgress", function(params) {
+      		document.getElementById('loadingBar').removeAttribute("style");
+	        var maxWidth = 496;
+	        var minWidth = 20;
+	        var widthFactor = params.iterations/params.total;
+	        var width = Math.max(minWidth,maxWidth * widthFactor);
+
+	        document.getElementById('bar').style.width = width + 'px';
+	        document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+	    });
+	    network.once("stabilizationIterationsDone", function() {
+	        document.getElementById('text').innerHTML = '100%';
+	        document.getElementById('bar').style.width = '496px';
+	        document.getElementById('loadingBar').style.opacity = 0;
+	        // really clean the dom element
+	        setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+	    });
         
 
         return network;
